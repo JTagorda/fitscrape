@@ -37,8 +37,10 @@ app.use(router);
 
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/demodata", { useNewUrlParser: true });
+//mongoose.connect("mongodb://localhost/demodata", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/demodata";
 
+mongoose.connect(MONGODB_URI);
 // Start the server
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");
